@@ -1,0 +1,335 @@
+:root {
+  color: #111827;
+  background: #ffffff;
+  font-family:
+    Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --blue: #2878ef;
+  --blue-hover: #1768dc;
+  --text: #111827;
+  --muted: #8a99ac;
+  --line: #dde5ee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: #ffffff;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 14%, rgba(247, 250, 253, 0.75), transparent 34rem),
+    #ffffff;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.app-header {
+  height: 108px;
+  padding: 24px 38px;
+}
+
+.brand {
+  color: #172131;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.todo-page {
+  display: flex;
+  justify-content: center;
+  padding: 67px 32px 96px;
+}
+
+.todo-panel {
+  width: min(928px, 100%);
+}
+
+.todo-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 149px;
+  gap: 16px;
+  margin-bottom: 39px;
+}
+
+.todo-form input {
+  width: 100%;
+  height: 80px;
+  border: 1px solid #c8d3e0;
+  border-radius: 11px;
+  outline: none;
+  padding: 0 28px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 1px 3px rgba(20, 36, 58, 0.03);
+  font-size: 26px;
+  line-height: 1;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.todo-form input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.todo-form input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(40, 120, 239, 0.12);
+}
+
+.add-button {
+  height: 80px;
+  border: 0;
+  border-radius: 11px;
+  cursor: pointer;
+  color: #ffffff;
+  background: var(--blue);
+  box-shadow: 0 8px 18px rgba(40, 120, 239, 0.18);
+  font-size: 25px;
+  font-weight: 500;
+  transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.add-button:hover:not(:disabled) {
+  background: var(--blue-hover);
+  box-shadow: 0 10px 22px rgba(40, 120, 239, 0.24);
+  transform: translateY(-1px);
+}
+
+.add-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.add-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+  box-shadow: none;
+}
+
+.todo-list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.todo-item {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 44px;
+  align-items: center;
+  min-height: 87px;
+  padding: 16px 20px 16px 31px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 7px rgba(22, 38, 61, 0.025);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.todo-item:hover {
+  border-color: #cdd8e5;
+  box-shadow: 0 6px 18px rgba(22, 38, 61, 0.06);
+  transform: translateY(-1px);
+}
+
+.check-button {
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  padding: 0;
+  border: 2px solid #a9b7c7;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #ffffff;
+  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.check-button:hover {
+  border-color: var(--blue);
+  transform: scale(1.04);
+}
+
+.check-button[aria-pressed="true"] {
+  border-color: var(--blue);
+  background: var(--blue);
+}
+
+.check-button svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.todo-label {
+  min-width: 0;
+  padding-left: 21px;
+  overflow-wrap: anywhere;
+  color: var(--text);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.45;
+  transition: color 160ms ease;
+}
+
+.is-complete .todo-label {
+  color: #8b98a8;
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+
+.delete-button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
+  color: #8391a2;
+  background: transparent;
+  opacity: 0;
+  transition: color 160ms ease, background-color 160ms ease, opacity 160ms ease;
+}
+
+.todo-item:hover .delete-button,
+.delete-button:focus-visible {
+  opacity: 1;
+}
+
+.delete-button:hover {
+  color: #e34a55;
+  background: #fff1f2;
+}
+
+.delete-button svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.empty-state {
+  margin: 42px 0 0;
+  color: #8a99ac;
+  text-align: center;
+  font-size: 16px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(40, 120, 239, 0.35);
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .app-header {
+    height: 82px;
+    padding: 23px 24px;
+  }
+
+  .brand {
+    font-size: 31px;
+  }
+
+  .todo-page {
+    padding: 36px 20px 64px;
+  }
+
+  .todo-form {
+    grid-template-columns: minmax(0, 1fr) 92px;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .todo-form input,
+  .add-button {
+    height: 64px;
+  }
+
+  .todo-form input {
+    padding: 0 18px;
+    font-size: 18px;
+  }
+
+  .add-button {
+    font-size: 18px;
+  }
+
+  .todo-item {
+    grid-template-columns: 34px minmax(0, 1fr) 36px;
+    min-height: 72px;
+    padding: 13px 11px 13px 18px;
+  }
+
+  .check-button {
+    width: 31px;
+    height: 31px;
+  }
+
+  .todo-label {
+    padding-left: 14px;
+    font-size: 17px;
+  }
+
+  .delete-button {
+    width: 36px;
+    height: 36px;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
