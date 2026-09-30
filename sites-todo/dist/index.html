@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="タスクをすばやく追加、完了、整理できるシンプルなTodoアプリ" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232878ef'/%3E%3Cpath d='M17 33l10 10 21-23' fill='none' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Todo</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="#top" aria-label="Todo ホーム">Todo</a>
+      </header>
+
+      <main class="todo-page" id="top">
+        <section class="todo-panel" aria-labelledby="todo-heading">
+          <h1 id="todo-heading" class="sr-only">タスク一覧</h1>
+
+          <form class="todo-form" id="todo-form">
+            <label class="sr-only" for="new-todo">新しいタスク</label>
+            <input
+              id="new-todo"
+              name="todo"
+              placeholder="タスクを入力..."
+              autocomplete="off"
+            />
+            <button class="add-button" id="add-button" type="submit" disabled>追加</button>
+          </form>
+
+          <ul class="todo-list" id="todo-list" aria-live="polite"></ul>
+          <p class="empty-state" id="empty-state" hidden>
+            タスクはありません。新しいタスクを追加しましょう。
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
